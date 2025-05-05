@@ -1,15 +1,61 @@
 package com.nnk.springboot.domain;
 
-import org.springframework.beans.factory.annotation.Required;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bidlist")
+@Data
+@NoArgsConstructor
 public class BidList {
-    // TODO: Map columns in data table BIDLIST with corresponding java fields
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @NotEmpty(message = "Account is mandatory")
+    @Size(min = 1, max = 50, message = "Account must be between 1 and 50 characters")
+    private String account;
+
+    @NotEmpty(message = "Type is mandatory")
+    @Size(min = 1, max = 50, message = "Type must be between 1 and 50 characters")
+    private String type;
+
+    @NotNull(message = "Bid quantity is mandatory") // Assure que la quantité n'est pas nulle
+    @Min(value = 0, message = "Bid quantity must be greater than or equal to zero")
+    private Double bidQuantity;
+
+
+    private Double askQuantity;
+    private Double bid;
+    private Double ask;
+    private String benchmark;
+    private LocalDateTime bidListDate;
+    private String commentary;
+    private String security;
+    private String status;
+    private String trader;
+    private String book;
+    private String creationName;
+    private LocalDateTime creationDate;
+    private String revisionName;
+    private LocalDateTime revisionDate;
+    private String dealName;
+    private String dealType;
+    private String sourceListId;
+    private String side;
+
+
+    public BidList(String account, String type, Double bidQuantity) {
+        this.account = account;
+        this.type = type;
+        this.bidQuantity = bidQuantity;
+    }
 }
