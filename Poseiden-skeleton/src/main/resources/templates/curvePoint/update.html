@@ -1,3 +1,5 @@
+<!-- Template pour la mise à jour d'un point de courbe (CurvePoint)
+     Utilise Thymeleaf pour le binding des données et la validation des formulaires -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
@@ -13,7 +15,18 @@
 	</div>
 
 	<div class="row">
+		<!-- Formulaire de mise à jour avec binding sur l'objet curvePoint -->
 		<form action="#" th:action="@{/curvePoint/update/{id}(id=${curvePoint.id})}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
+			<!-- Nouveau champ Curve ID -->
+			<!-- Champ pour l'ID de la courbe avec validation -->
+			<div class="form-group">
+				<label for="curveId" class="col-sm-2 control-label">Curve ID</label>
+				<div class="col-sm-10">
+					<input type="number" th:field="*{curveId}" id="curveId" placeholder="Curve ID" class="col-4">
+					<!-- Message d'erreur si la validation échoue -->
+					<p class="text-danger" th:if="${#fields.hasErrors('curveId')}" th:errors="*{curveId}"></p>
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="term" class="col-sm-2 control-label">Term</label>
 				<div class="col-sm-10">
@@ -29,10 +42,14 @@
 				</div>
 			</div>
 
+			<!-- Boutons d'action du formulaire -->
 			<div class="form-group">
 				<div class="col-sm-12">
+					<!-- Champ caché pour l'ID -->
 					<input type="hidden" th:field="*{id}">
+					<!-- Bouton d'annulation qui redirige vers la liste -->
 					<a class="btn btn-danger btn-sm" href="/curvePoint/list">Cancel</a>
+					<!-- Bouton de soumission du formulaire -->
 					<input class="btn btn-primary btn-sm" type="submit" value="Update Curve Point">
 				</div>
 			</div>

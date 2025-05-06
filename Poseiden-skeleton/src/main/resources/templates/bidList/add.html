@@ -1,3 +1,8 @@
+<!--
+    Formulaire d'ajout d'une nouvelle enchère (bid)
+    Ce template permet aux utilisateurs de créer une nouvelle enchère en saisissant
+    les informations nécessaires comme le compte, le type et la quantité.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
@@ -14,7 +19,9 @@
 	</div>
 
 	<div class="row">
+		<!-- Formulaire de saisie des données de l'enchère -->
 		<form action="#" th:action="@{/bidList/validate}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
+			<!-- Champ pour le compte associé à l'enchère -->
 			<div class="form-group">
 				<label for="account" class="col-sm-2 control-label">Account</label>
 				<div class="col-sm-10">
@@ -22,6 +29,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></p>
 				</div>
 			</div>
+			<!-- Champ pour le type d'enchère -->
 			<div class="form-group">
 				<label for="type" class="col-sm-2 control-label">Type</label>
 				<div class="col-sm-10">
@@ -29,6 +37,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>
 				</div>
 			</div>
+			<!-- Champ pour la quantité de l'enchère -->
 			<div class="form-group">
 				<label for="bidQuantity" class="col-sm-2 control-label">Bid Quantity</label>
 				<div class="col-sm-10">

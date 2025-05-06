@@ -12,32 +12,44 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Classe de test pour vérifier les opérations CRUD sur l'entité CurvePoint.
+ * Utilise Spring Runner pour l'exécution des tests avec le contexte Spring.
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CurvePointTests {
 
+	/**
+	 * Repository pour gérer les opérations de persistance des CurvePoint.
+	 * Injecté automatiquement par Spring.
+	 */
 	@Autowired
 	private CurvePointRepository curvePointRepository;
 
+	/**
+	 * Teste l'ensemble des opérations CRUD sur l'entité CurvePoint.
+	 * Vérifie la création, la lecture, la mise à jour et la suppression.
+	 */
 	@Test
 	public void curvePointTest() {
 		CurvePoint curvePoint = new CurvePoint(10, 10d, 30d);
 
-		// Save
+		// Teste la sauvegarde d'un nouveau CurvePoint
 		curvePoint = curvePointRepository.save(curvePoint);
 		Assert.assertNotNull(curvePoint.getId());
 		Assert.assertTrue(curvePoint.getCurveId() == 10);
 
-		// Update
+		// Teste la mise à jour d'un CurvePoint existant
 		curvePoint.setCurveId(20);
 		curvePoint = curvePointRepository.save(curvePoint);
 		Assert.assertTrue(curvePoint.getCurveId() == 20);
 
-		// Find
+		// Teste la recherche de tous les CurvePoint
 		List<CurvePoint> listResult = curvePointRepository.findAll();
 		Assert.assertTrue(listResult.size() > 0);
 
-		// Delete
+		// Teste la suppression d'un CurvePoint
 		Integer id = curvePoint.getId();
 		curvePointRepository.delete(curvePoint);
 		Optional<CurvePoint> curvePointList = curvePointRepository.findById(id);

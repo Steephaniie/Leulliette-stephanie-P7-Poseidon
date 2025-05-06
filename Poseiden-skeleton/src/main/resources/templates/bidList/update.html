@@ -1,3 +1,7 @@
+<!--
+    Template Thymeleaf pour la mise à jour d'une enchère (BidList)
+    Ce fichier gère l'interface utilisateur pour modifier les détails d'une enchère existante
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
@@ -7,17 +11,22 @@
 <link rel="stylesheet" href="../../css/bootstrap.min.css" >
 </head>
 <body>
+<!-- Conteneur principal de la page -->
 <div class="container">
+	<!-- En-tête de la page -->
 	<div class="row">
 		<h2>Update Bid</h2>
 	</div>
 
+	<!-- Formulaire de mise à jour d'une enchère -->
 	<div class="row">
+		<!-- Le formulaire utilise la méthode POST et envoie les données vers /bidList/update/{id} -->
 		<form action="#" th:action="@{/bidList/update/{id}(id=${bidList.id})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
 				<label for="account" class="col-sm-2 control-label">Account</label>
 				<div class="col-sm-10">
 					<input type="text" th:field="*{account}" id="account" placeholder="Account" class="col-4">
+					<!-- Affichage des messages d'erreur pour le champ account -->
 					<p class="text-danger" th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></p>
 				</div>
 			</div>

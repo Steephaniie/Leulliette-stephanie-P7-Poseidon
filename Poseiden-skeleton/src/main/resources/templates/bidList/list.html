@@ -1,3 +1,5 @@
+<!-- Template pour l'affichage de la liste des offres (Bid List)
+     Utilise Thymeleaf pour le rendu dynamique des données -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
@@ -8,7 +10,9 @@
 </head>
 <body>
 <div class="container">
+	<!-- Barre de navigation principale -->
 	<div class="row">
+		<!-- Menu de navigation -->
 		<div class="col-6">
 			<a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
 			<a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
@@ -16,6 +20,7 @@
 			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
 			<a href="/ruleName/list">Rule</a>
 		</div>
+		<!-- Section d'informations utilisateur et déconnexion -->
 		<div class="col-6 text-right">
 			Logged in user: <b th:inline="text"  class="user" th:text="${username}"> </b>
 			<form th:action="@{/app-logout}" method="POST">
@@ -24,8 +29,11 @@
 		</div>
 	</div>
 	<div class="row"><h2>Bid List</h2></div>
+	<!-- Section du tableau des offres -->
 	<div class="row">
+		<!-- Bouton d'ajout d'une nouvelle offre -->
 		<a href="/bidList/add" class="btn btn-primary btn-sm">Add New</a>
+		<!-- Tableau des offres existantes -->
 		<table class="table table-bordered">
 			<thead>
 				<tr>
