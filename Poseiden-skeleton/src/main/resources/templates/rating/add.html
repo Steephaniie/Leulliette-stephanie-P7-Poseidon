@@ -1,3 +1,7 @@
+<!--
+    Template Thymeleaf pour l'ajout d'une nouvelle notation (Rating)
+    Contient un formulaire permettant la saisie des informations de notation
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
@@ -14,7 +18,9 @@
 	</div>
 
 	<div class="row">
+		<!-- Formulaire d'ajout de notation avec validation côté serveur -->
 		<form action="#" th:action="@{/rating/validate}" th:object="${rating}" method="post" class="form-horizontal" style="width: 100%">
+			<!-- Champ pour la notation Moody's -->
 			<div class="form-group">
 				<label for="moodysRating" class="col-sm-2 control-label">MoodysRating</label>
 				<div class="col-sm-10">
@@ -22,6 +28,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('moodysRating')}" th:errors="*{moodysRating}"></p>
 				</div>
 			</div>
+			<!-- Champ pour la notation Standard & Poor's -->
 			<div class="form-group">
 				<label for="sandPRating" class="col-sm-2 control-label">SandPRating</label>
 				<div class="col-sm-10">
@@ -29,6 +36,7 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('sandPRating')}" th:errors="*{sandPRating}"></p>
 				</div>
 			</div>
+			<!-- Champ pour la notation Fitch -->
 			<div class="form-group">
 				<label for="fitchRating" class="col-sm-2 control-label">FitchRating</label>
 				<div class="col-sm-10">
@@ -36,11 +44,12 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('fitchRating')}" th:errors="*{fitchRating}"></p>
 				</div>
 			</div>
+			<!-- Champ pour le numéro d'ordre -->
 			<div class="form-group">
-				<label for="order" class="col-sm-2 control-label">Order</label>
+				<label for="orderNumber" class="col-sm-2 control-label">Order</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{order}" id="order" placeholder="FitchRating" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('order')}" th:errors="*{order}"></p>
+					<input type="text" th:field="*{orderNumber}" id="orderNumber" placeholder="FitchRating" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></p>
 				</div>
 			</div>
 

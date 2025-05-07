@@ -1,16 +1,26 @@
+<!--
+    Page d'erreur 403 - Accès Refusé
+    Cette page est affichée lorsqu'un utilisateur tente d'accéder à une ressource sans avoir les permissions nécessaires.
+    Utilise Thymeleaf pour l'affichage dynamique des informations.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-      <title>Spring Boot</title>
+    <title>Accès Refusé</title>
 </head>
 <body>
-   <h3>Access Denied Exception</h3>
-   <div>
-	    Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
-	    <form th:action="@{/app-logout}" method="POST">
-	         <input type="submit" value="Logout"/>
-	    </form>
-   </div> 	 
-    <p class="error" th:text="${errorMsg}">Error</p>
+<!-- Titre principal de la page d'erreur -->
+<h3>Accès Refusé</h3>
+<!-- Section d'informations de l'utilisateur connecté -->
+<div>
+    <!-- Affichage du nom d'utilisateur -->
+    Utilisateur connecté: <b th:inline="text" class="user" th:text="${username}"> </b>
+    <!-- Formulaire de déconnexion -->
+    <form th:action="@{/app-logout}" method="POST">
+        <input type="submit" value="Déconnexion"/>
+    </form>
+</div>
+<!-- Message d'erreur personnalisé -->
+<p class="error" th:text="${errorMsg}">Erreur</p>
 </body>
 </html>   

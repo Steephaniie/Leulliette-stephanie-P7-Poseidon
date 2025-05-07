@@ -1,3 +1,8 @@
+<!--
+    Template pour la mise à jour d'une règle existante.
+    Ce template fournit un formulaire permettant de modifier les informations d'une règle,
+    incluant son nom, sa description, son JSON, son template, et ses paramètres SQL.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
@@ -9,10 +14,12 @@
 <body>
 <div class="container">
 
+	<!-- En-tête du formulaire -->
 	<div class="row">
 		<h2>Update New Rule</h2>
 	</div>
 
+	<!-- Formulaire de mise à jour -->
 	<div class="row">
 		<form action="#" th:action="@{/ruleName/update/{id}(id=${ruleName.id})}" th:object="${ruleName}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
@@ -44,10 +51,10 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="sql" class="col-sm-2 control-label">SQL</label>
+				<label for="sqlStr" class="col-sm-2 control-label">SQL</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{sql}" id="sql" placeholder="SQL" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('sql')}" th:errors="*{sql}"></p>
+					<input type="text" th:field="*{sqlStr}" id="sqlStr" placeholder="SQL" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('sqlStr')}" th:errors="*{sqlStr}"></p>
 				</div>
 			</div>
 			<div class="form-group">
@@ -59,6 +66,7 @@
 			</div>
 
 
+			<!-- Boutons d'action du formulaire -->
 			<div class="form-group">
 				<div class="col-sm-12">
 					<input type="hidden" th:field="*{id}">
