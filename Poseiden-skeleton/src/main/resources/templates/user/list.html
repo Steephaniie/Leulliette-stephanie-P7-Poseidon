@@ -1,3 +1,8 @@
+<!--
+ * Template pour l'affichage de la liste des utilisateurs
+ * Utilise Thymeleaf pour le rendu dynamique des données
+ * Affiche un tableau avec les informations des utilisateurs et les actions disponibles
+ -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org">
@@ -8,17 +13,20 @@
 </head>
 <body>
 <div class="container">
+	<!-- Navigation -->
 	<div class="row">
 		<div class="col-6">
 
 		</div>
 		<div class="col-6 text-right">
-			<a href="/">Home</a>&nbsp;|&nbsp;<a href="/login">Login</a>
+			<a href="/">Home</a>&nbsp;|&nbsp;<a href="/app/login">Login</a>
 		</div>
 	</div>
+	<!-- En-tête de la section principale -->
 	<div class="row"><h2>User List</h2></div>
 	<div class="row">
 		<a href="/user/add" class="btn btn-primary btn-sm">Add New</a>
+		<!-- Tableau des utilisateurs -->
 		<table class="table table-bordered">
 			<thead>
 				<tr>
