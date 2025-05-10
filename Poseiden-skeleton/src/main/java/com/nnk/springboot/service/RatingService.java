@@ -81,8 +81,6 @@ public class RatingService {
         ratingToUpdate.setFitchRating(rating.getFitchRating());
         ratingToUpdate.setOrderNumber(rating.getOrderNumber());
 
-        if (!rating.equals(ratingToUpdate)) return ratingToUpdate;
-
         return ratingRepository.save(ratingToUpdate);
     }
 

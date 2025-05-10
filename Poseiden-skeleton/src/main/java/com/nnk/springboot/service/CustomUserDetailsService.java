@@ -36,7 +36,6 @@ public class CustomUserDetailsService implements org.springframework.security.co
      */
     private final UserRepository userRepository;
 
-
     /**
      * Charge les détails d'un utilisateur pour l'authentification en se basant sur son nom d'utilisateur.
      * Cette méthode recherche l'utilisateur dans le référentiel {@link UserRepository} et,
@@ -60,7 +59,6 @@ public class CustomUserDetailsService implements org.springframework.security.co
                     return new UsernameNotFoundException("User not found with username : " + username);
                 });
     }
-
 
     /**
      * Crée et retourne un utilisateur de sécurité Spring {@link org.springframework.security.core.userdetails.User} basé sur un utilisateur de l'application

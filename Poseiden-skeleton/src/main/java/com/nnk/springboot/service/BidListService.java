@@ -74,9 +74,6 @@ public class BidListService {
         bidToUpdate.setType(bid.getType());
         bidToUpdate.setBidQuantity(bid.getBidQuantity());
 
-        // Vérifie si des modifications ont été apportées
-        if (!bid.equals(bidToUpdate)) return bidToUpdate;
-
         return bidListRepository.save(bidToUpdate);
     }
 

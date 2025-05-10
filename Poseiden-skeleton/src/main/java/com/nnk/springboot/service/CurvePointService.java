@@ -76,9 +76,6 @@ public class CurvePointService {
         curvePointToUpdate.setTerm(curvePoint.getTerm());
         curvePointToUpdate.setValue(curvePoint.getValue());
 
-        // Vérifie si des modifications ont été apportées
-        if (!curvePoint.equals(curvePointToUpdate)) return curvePointToUpdate;
-
         return curvePointRepository.save(curvePointToUpdate);
     }
 

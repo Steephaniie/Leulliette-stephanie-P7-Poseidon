@@ -75,8 +75,6 @@ public class RuleNameService {
         ruleNameToUpdate.setSqlStr(ruleName.getSqlStr());
         ruleNameToUpdate.setSqlPart(ruleName.getSqlPart());
 
-        if (!ruleName.equals(ruleNameToUpdate)) return ruleNameToUpdate;
-
         return ruleNameRepository.save(ruleNameToUpdate);
     }
 

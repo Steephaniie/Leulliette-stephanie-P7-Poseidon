@@ -74,9 +74,6 @@ public class TradeService {
         tradeToUpdate.setType(trade.getType());
         tradeToUpdate.setBuyQuantity(trade.getBuyQuantity());
 
-        // Vérifie si des modifications ont été apportées
-        if (!trade.equals(tradeToUpdate)) return tradeToUpdate;
-
         // Sauvegarde les modifications
         return tradeRepository.save(tradeToUpdate);
     }

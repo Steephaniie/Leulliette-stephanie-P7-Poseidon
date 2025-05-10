@@ -73,9 +73,6 @@ public class UserService {
         userToUpdate.setRole(user.getRole());
         userToUpdate.setPassword(user.getPassword());
     
-        // Vérification si des modifications ont été apportées
-        if (!user.equals(userToUpdate)) return userToUpdate;
-    
         // Sauvegarde des modifications
         return userRepository.save(userToUpdate);
     }
