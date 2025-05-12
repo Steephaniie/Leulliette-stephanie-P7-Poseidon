@@ -90,5 +90,5 @@ Le projet gère les entités suivantes avec des méthodes CRUD complètes :
 
 ## Accès à l'application 
 - Page d’accueil : http://localhost:8080
-- Connexion: http://localhost:8080/login
+- Connexion: http://localhost:8080/app/login
 - Interface sécurisée accessible après authentification
