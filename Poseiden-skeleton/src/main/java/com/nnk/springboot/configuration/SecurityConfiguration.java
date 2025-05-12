@@ -43,6 +43,9 @@ public class SecurityConfiguration {
                         .requestMatchers("/user/**").hasRole("ADMIN") // accès restreint aux administrateurs
                         .anyRequest().authenticated() // Toutes les autres requêtes doivent être authentifiées
                 )
+                .exceptionHandling(exception -> exception
+                        .accessDeniedPage("/app/error") // Redirection vers la page 403 pour accès refusé
+                )
                 .formLogin(form -> form
                         .loginPage("/app/login")
                         .defaultSuccessUrl("/bidList/list", true) // Page de connexion personnalisée avec redirection forcée
@@ -54,10 +57,7 @@ public class SecurityConfiguration {
                         .logoutUrl("/app-logout") // URL de déconnexion personnalisée
                         .logoutSuccessUrl("/app/login") // Redirection après déconnexion
                         .permitAll()
-                )
-                .exceptionHandling(exception -> exception
-                        .accessDeniedPage("/app/error") // Redirection vers la page 403 pour accès refusé
-                );
+                );        ;
         return http.build();
     }
 
