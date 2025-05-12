@@ -32,7 +32,6 @@ L'interface utilisateur (front-end) est déjà fournie, ce projet se concentre d
    - **src/main/resources/templates** (vues Thymeleaf)
    - **src/main/resources/static** (ressources statiques : CSS, JS, images)
 4. Créer une base de données nommée `demo` (ou celle définie dans `application.properties`).
-5. Exécuter le script SQL `data.sql` pour initialiser les tables.
 
 ---
 
