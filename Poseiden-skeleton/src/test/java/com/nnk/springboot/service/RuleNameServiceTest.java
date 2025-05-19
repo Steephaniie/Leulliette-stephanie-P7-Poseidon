@@ -16,6 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
+/**
+ * Classe de tests pour RuleNameService.
+ * Cette classe teste les différentes fonctionnalités du service de gestion des règles.
+ */
 @ExtendWith(MockitoExtension.class)
 class RuleNameServiceTest {
 
@@ -26,6 +30,10 @@ class RuleNameServiceTest {
     private RuleNameService ruleNameService;
 
 
+    /**
+     * Teste la récupération de toutes les règles.
+     * Vérifie que la méthode getAll retourne correctement la liste des règles.
+     */
     @Test
     void getAll_returnsAllRuleNames() {
         when(ruleNameRepository.findAll()).thenReturn(Arrays.asList(mock(RuleName.class), mock(RuleName.class)));
@@ -36,6 +44,10 @@ class RuleNameServiceTest {
     }
 
 
+    /**
+     * Teste la sauvegarde d'une nouvelle règle.
+     * Vérifie que la méthode save enregistre correctement une règle.
+     */
     @Test
     void save_savesAndReturnsRuleName() {
         when(ruleNameRepository.save(any(RuleName.class))).thenReturn(mock(RuleName.class));
@@ -46,6 +58,10 @@ class RuleNameServiceTest {
     }
 
 
+    /**
+     * Teste la récupération d'une règle par son ID existant.
+     * Vérifie que la méthode getById retourne la règle correspondante.
+     */
     @Test
     void getById_existingId_returnsRuleName() {
         when(ruleNameRepository.findById(anyInt())).thenReturn(Optional.of(mock(RuleName.class)));
@@ -56,6 +72,10 @@ class RuleNameServiceTest {
     }
 
 
+    /**
+     * Teste la récupération d'une règle avec un ID inexistant.
+     * Vérifie que la méthode getById lance une exception EntityNotFoundException.
+     */
     @Test
     void getById_nonExistingId_throwsEntityNotFoundException() {
         when(ruleNameRepository.findById(anyInt())).thenReturn(Optional.empty());
@@ -65,6 +85,10 @@ class RuleNameServiceTest {
     }
 
 
+    /**
+     * Teste la mise à jour d'une règle existante.
+     * Vérifie que la méthode update modifie correctement la règle.
+     */
     @Test
     void update_existingId_updatesAndReturnsRuleName() {
         RuleName existingRuleName = new RuleName();
@@ -82,6 +106,10 @@ class RuleNameServiceTest {
     }
 
 
+    /**
+     * Teste la suppression d'une règle existante.
+     * Vérifie que la méthode delete supprime correctement la règle.
+     */
     @Test
     void delete_existingId_deletesRuleName() {
         when(ruleNameRepository.existsById(anyInt())).thenReturn(true);
@@ -93,6 +121,10 @@ class RuleNameServiceTest {
     }
 
 
+    /**
+     * Teste la suppression d'une règle avec un ID inexistant.
+     * Vérifie que la méthode delete lance une exception EntityNotFoundException.
+     */
     @Test
     void delete_nonExistingId_throwsEntityNotFoundException() {
         when(ruleNameRepository.existsById(anyInt())).thenReturn(false);

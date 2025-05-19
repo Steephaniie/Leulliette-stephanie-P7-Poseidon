@@ -16,17 +16,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
+/**
+ * Classe de tests unitaires pour BidListService.
+ * Cette classe teste toutes les fonctionnalités du service de gestion des enchères.
+ */
 @ExtendWith(MockitoExtension.class)
 class BidListServiceTest {
 
+    // Repository mock pour simuler les opérations de base de données
     @Mock
     private BidListRepository bidListRepository;
 
+    // Service à tester avec injection des mocks
     @InjectMocks
     private BidListService bidListService;
 
 
-
+    /**
+     * Teste la récupération de toutes les enchères.
+     * Vérifie que la méthode getAll appelle correctement le repository.
+     */
     @Test
     void getAll_returnsAllBids() {
         when(bidListRepository.findAll()).thenReturn(Arrays.asList(mock(BidList.class), mock(BidList.class)));
@@ -37,6 +46,10 @@ class BidListServiceTest {
     }
 
 
+    /**
+     * Teste la sauvegarde d'une enchère.
+     * Vérifie que la méthode save appelle correctement le repository.
+     */
     @Test
     void save_savesAndReturnsBid() {
         when(bidListRepository.save(any(BidList.class))).thenReturn(mock(BidList.class));
@@ -47,6 +60,10 @@ class BidListServiceTest {
     }
 
 
+    /**
+     * Teste la récupération d'une enchère par son ID quand elle existe.
+     * Vérifie que la méthode getById retourne l'enchère correctement.
+     */
     @Test
     void getById_existingId_returnsBid() {
         when(bidListRepository.findById(anyInt())).thenReturn(Optional.of(mock(BidList.class)));
@@ -57,6 +74,10 @@ class BidListServiceTest {
     }
 
 
+    /**
+     * Teste la récupération d'une enchère avec un ID inexistant.
+     * Vérifie que la méthode getById lance une exception EntityNotFoundException.
+     */
     @Test
     void getById_nonExistingId_throwsEntityNotFoundException() {
         when(bidListRepository.findById(anyInt())).thenReturn(Optional.empty());
@@ -66,6 +87,10 @@ class BidListServiceTest {
     }
 
 
+    /**
+     * Teste la mise à jour d'une enchère existante.
+     * Vérifie que la méthode update modifie correctement l'enchère.
+     */
     @Test
     void update_existingId_updatesAndReturnsBid() {
         BidList existingBid = new BidList();
@@ -83,6 +108,10 @@ class BidListServiceTest {
     }
 
 
+    /**
+     * Teste la suppression d'une enchère existante.
+     * Vérifie que la méthode delete supprime correctement l'enchère.
+     */
     @Test
     void delete_existingId_deletesBid() {
         when(bidListRepository.existsById(anyInt())).thenReturn(true);
@@ -94,6 +123,10 @@ class BidListServiceTest {
     }
 
 
+    /**
+     * Teste la suppression d'une enchère avec un ID inexistant.
+     * Vérifie que la méthode delete lance une exception EntityNotFoundException.
+     */
     @Test
     void delete_nonExistingId_throwsEntityNotFoundException() {
         when(bidListRepository.existsById(anyInt())).thenReturn(false);

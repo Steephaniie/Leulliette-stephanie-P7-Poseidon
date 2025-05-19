@@ -16,6 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
+/**
+ * Tests unitaires pour le service CurvePoint.
+ * Cette classe teste toutes les opérations CRUD du service CurvePoint
+ * en utilisant des mocks pour simuler le comportement du repository.
+ */
 @ExtendWith(MockitoExtension.class)
 class CurvePointServiceTest {
 
@@ -26,30 +31,51 @@ class CurvePointServiceTest {
     private CurvePointService curvePointService;
 
 
+    /**
+     * Teste la récupération de tous les points de courbe.
+     * Vérifie que la méthode getAll appelle correctement le repository
+     * et retourne la liste complète des points.
+     */
     @Test
     void getAll_returnsAllCurvePoints() {
+        // Simule le retour d'une liste de deux points de courbe
         when(curvePointRepository.findAll()).thenReturn(Arrays.asList(mock(CurvePoint.class), mock(CurvePoint.class)));
 
         curvePointService.getAll();
 
+        // Vérifie que la méthode findAll du repository a été appelée
         verify(curvePointRepository).findAll();
     }
 
+    /**
+     * Teste la sauvegarde d'un point de courbe.
+     * Vérifie que la méthode save enregistre correctement le point
+     * dans le repository.
+     */
     @Test
     void save_savesAndReturnsCurvePoint() {
+        // Configure le mock pour simuler la sauvegarde
         when(curvePointRepository.save(any(CurvePoint.class))).thenReturn(mock(CurvePoint.class));
 
         curvePointService.save(mock(CurvePoint.class));
 
+        // Vérifie que la méthode save du repository a été appelée avec un point de courbe
         verify(curvePointRepository).save(any(CurvePoint.class));
     }
 
+    /**
+     * Teste la récupération d'un point de courbe par son ID.
+     * Vérifie que la méthode retourne correctement le point
+     * lorsque l'ID existe.
+     */
     @Test
     void getById_existingId_returnsCurvePoint() {
+        // Simule la présence d'un point de courbe dans le repository
         when(curvePointRepository.findById(anyInt())).thenReturn(Optional.of(mock(CurvePoint.class)));
 
         curvePointService.getById(anyInt());
 
+        // Vérifie que la recherche par ID a été effectuée
         verify(curvePointRepository).findById(anyInt());
     }
 

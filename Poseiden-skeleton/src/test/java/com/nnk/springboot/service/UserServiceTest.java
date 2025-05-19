@@ -16,6 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
+/**
+ * Classe de tests unitaires pour le UserService.
+ * Cette classe teste toutes les fonctionnalités CRUD du service utilisateur.
+ */
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
@@ -26,6 +30,10 @@ class UserServiceTest {
     private UserService userService;
 
 
+    /**
+     * Teste la récupération de tous les utilisateurs.
+     * Vérifie que la méthode getAll appelle correctement le repository.
+     */
     @Test
     void getAll_returnsAllUsers() {
         when(userRepository.findAll()).thenReturn(Arrays.asList(mock(User.class), mock(User.class)));
@@ -35,6 +43,10 @@ class UserServiceTest {
         verify(userRepository).findAll();
     }
 
+    /**
+     * Teste la sauvegarde d'un nouvel utilisateur.
+     * Vérifie que la méthode save appelle correctement le repository.
+     */
     @Test
     void save_savesAndReturnsUser() {
         when(userRepository.save(any(User.class))).thenReturn(mock(User.class));
@@ -44,6 +56,10 @@ class UserServiceTest {
         verify(userRepository).save(any(User.class));
     }
 
+    /**
+     * Teste la récupération d'un utilisateur par son ID existant.
+     * Vérifie que la méthode getById retourne l'utilisateur correctement.
+     */
     @Test
     void getById_existingId_returnsUser() {
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(mock(User.class)));
@@ -53,6 +69,10 @@ class UserServiceTest {
         verify(userRepository).findById(anyInt());
     }
 
+    /**
+     * Teste la tentative de récupération d'un utilisateur avec un ID inexistant.
+     * Vérifie que la méthode getById lance une exception EntityNotFoundException.
+     */
     @Test
     void getById_nonExistingId_throwsEntityNotFoundException() {
         when(userRepository.findById(anyInt())).thenReturn(Optional.empty());
@@ -61,6 +81,10 @@ class UserServiceTest {
         verify(userRepository).findById(anyInt());
     }
 
+    /**
+     * Teste la mise à jour d'un utilisateur existant.
+     * Vérifie que la méthode update modifie correctement l'utilisateur.
+     */
     @Test
     void update_existingId_updatesAndReturnsUser() {
         User existingUser = new User();
@@ -78,6 +102,10 @@ class UserServiceTest {
     }
 
 
+    /**
+     * Teste la suppression d'un utilisateur existant.
+     * Vérifie que la méthode delete supprime correctement l'utilisateur.
+     */
     @Test
     void delete_existingId_deletesUser() {
         when(userRepository.existsById(anyInt())).thenReturn(true);
@@ -88,6 +116,10 @@ class UserServiceTest {
         verify(userRepository).deleteById(anyInt());
     }
 
+    /**
+     * Teste la tentative de suppression d'un utilisateur avec un ID inexistant.
+     * Vérifie que la méthode delete lance une exception EntityNotFoundException.
+     */
     @Test
     void delete_nonExistingId_throwsEntityNotFoundException() {
         when(userRepository.existsById(anyInt())).thenReturn(false);
