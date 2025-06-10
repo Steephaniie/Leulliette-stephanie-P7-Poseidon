@@ -1,6 +1,7 @@
 package com.nnk.springboot.service;
 
 
+import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.repositories.TradeRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class TradeService {
+public class TradeService  implements CrudService<Trade>{
 
     public final Logger logger = LoggerFactory.getLogger(TradeService.class);
 

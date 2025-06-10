@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class CurvePointService {
+public class CurvePointService  implements CrudService<CurvePoint> {
 
     public final Logger logger = LoggerFactory.getLogger(CurvePointService.class);
 

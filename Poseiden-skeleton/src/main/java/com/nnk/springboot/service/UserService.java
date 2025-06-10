@@ -1,6 +1,7 @@
 package com.nnk.springboot.service;
 
 
+import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,7 +19,7 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService  implements CrudService<User>{
 
     public final Logger logger = LoggerFactory.getLogger(UserService.class);
 

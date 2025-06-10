@@ -1,6 +1,7 @@
 package com.nnk.springboot.service;
 
 
+import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class RuleNameService {
+public class RuleNameService  implements CrudService<RuleName> {
 
     public final Logger logger = LoggerFactory.getLogger(RuleNameService.class);
 

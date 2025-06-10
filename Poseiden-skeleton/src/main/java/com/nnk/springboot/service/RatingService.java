@@ -1,6 +1,7 @@
 package com.nnk.springboot.service;
 
 
+import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.repositories.RatingRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class RatingService {
+public class RatingService  implements CrudService<Rating>{
 
     /**
      * Logger pour tracer les opérations du service

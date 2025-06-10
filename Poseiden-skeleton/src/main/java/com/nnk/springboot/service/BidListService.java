@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class BidListService {
+public class BidListService implements CrudService<BidList>{
 
     public final Logger logger = LoggerFactory.getLogger(BidListService.class);
 
